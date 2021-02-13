@@ -17,17 +17,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IBParking">
-        <activity android:name=".view.checkout.CheckoutActivity"></activity>
+        <activity android:name=".view.log.TodayLogActivity"></activity>
+        <activity android:name=".view.checkout.CheckoutActivity" />
         <activity android:name=".view.checkin.QrGenerateActivity" />
-        <activity android:name=".view.checkin.StationCheckinActivity">
+        <activity android:name=".view.checkin.CheckInActivity"></activity>
+        <activity android:name=".view.home.HomeActivity">
 
         </activity>
-        <activity android:name=".view.home.HomeActivity" >
-
-        </activity>
-
         <activity android:name=".view.auth.LoginActivity" />
-        <activity android:name=".MainActivity" >
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,16 +1,19 @@
 package net.ideabreed.ibparking.presenter;/*
- * Created by Rajan Karki on 2/9/21
+ * Created by Rajan Karki on 2/8/21
  * Copyright @2021
  */
+
+import net.ideabreed.ibparking.model.Ticket;
 
 public interface CheckInService {
 
     public interface View{
         void onError(String message);
-        void onMessage (String message);
+        void onSuccess(String message);
+        void onNavigate(Ticket ticket);
     }
 
     public interface Presenter{
-        void doCheckIn();
+        void onCheckIn(Ticket ticket);
     }
 }

@@ -24,7 +24,7 @@ public class PassengerRecyclerAdapter extends RecyclerView.Adapter<PassengerRecy
 
     ArrayList<Passenger> passengerTypes = new ArrayList<>();
     Context mContext;
-    private int checkedPosition = -1;
+    private int checkedPosition = 0;
 
     public PassengerRecyclerAdapter(ArrayList<Passenger> passengerTypes, Context mContext) {
         this.passengerTypes = passengerTypes;

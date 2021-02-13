@@ -86,16 +86,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="Email"
+                    android:text="Username"
                     android:textColor="@color/primaryColor" />
 
                 <EditText
-                    android:id="@+id/loginEmailET"
+                    android:id="@+id/loginUsernameET"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint=""
-
-                    android:inputType="textEmailAddress" />
+                    android:inputType="text" />
 
                 <TextView
                     android:layout_width="wrap_content"

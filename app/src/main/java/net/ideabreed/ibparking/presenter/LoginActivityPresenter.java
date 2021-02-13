@@ -3,19 +3,25 @@ package net.ideabreed.ibparking.presenter; /*
  * Copyright @2021
  */
 
+import net.ideabreed.ibparking.database.DatabaseHelper;
+import net.ideabreed.ibparking.model.User;
+
 public class LoginActivityPresenter implements LoginService.Presenter {
 
     LoginService.View view;
+    DatabaseHelper databaseHelper;
 
-    public LoginActivityPresenter(LoginService.View view) {
+    public LoginActivityPresenter(LoginService.View view,DatabaseHelper databaseHelper) {
         this.view = view;
+        this.databaseHelper = databaseHelper;
     }
 
+
     @Override
-    public void doLogin(String email, String password) {
+    public void doLogin(User user) {
 
 //        test: test@gmail.com test123
-        if(email.equals("test@gmail.com") && password.equals("test123")){
+        if(user.getUsername().equals("test") && user.getPassword().equals("test123")){
 //            view.onSuccess("Login Success");
             view.onNavigate();
         }else{

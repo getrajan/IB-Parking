@@ -7,22 +7,38 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Ticket implements Serializable {
-    private String type;
-    private String checkInStation;
-    private String checkOutStation;
+    private Passenger type;
+    private Station checkInStation;
+    private Station checkOutStation;
     private String checkInTime;
-    private Date checkOutTime;
+    private String checkOutTime;
     private Date date;
-    private double fare;
+    private User checkInUser;
+    private int fare;
     private String receiptId;
 
-    public Ticket(String type, String checkInStation) {
+    public Ticket(Passenger type, Station checkInStation) {
         this.type = type;
         this.checkInStation = checkInStation;
-
     }
 
-    public Ticket(String type, String checkInStation, String checkOutStation, String checkInTime, Date checkOutTime, Date date, double fare) {
+    public Ticket(Station checkOutStation, String checkOutTime, int fare, String receiptId
+    ) {
+        this.checkOutStation = checkOutStation;
+        this.checkOutTime = checkOutTime;
+        this.fare = fare;
+        this.receiptId = receiptId;
+    }
+
+    public Ticket(Passenger type, Station checkInStation, String checkInTime, User checkInUser, String receiptId) {
+        this.type = type;
+        this.checkInStation = checkInStation;
+        this.checkInTime = checkInTime;
+        this.checkInUser = checkInUser;
+        this.receiptId = receiptId;
+    }
+
+    public Ticket(Passenger type, Station checkInStation, Station checkOutStation, String checkInTime, String checkOutTime, Date date, int fare) {
         this.type = type;
         this.checkInStation = checkInStation;
         this.checkOutStation = checkOutStation;
@@ -32,28 +48,35 @@ public class Ticket implements Serializable {
         this.fare = fare;
     }
 
+    public User getCheckInUser() {
+        return checkInUser;
+    }
 
-    public String getType() {
+    public void setCheckInUser(User checkInUser) {
+        this.checkInUser = checkInUser;
+    }
+
+    public Passenger getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(Passenger type) {
         this.type = type;
     }
 
-    public String getCheckInStation() {
+    public Station getCheckInStation() {
         return checkInStation;
     }
 
-    public void setCheckInStation(String checkInStation) {
+    public void setCheckInStation(Station checkInStation) {
         this.checkInStation = checkInStation;
     }
 
-    public String getCheckOutStation() {
+    public Station getCheckOutStation() {
         return checkOutStation;
     }
 
-    public void setCheckOutStation(String checkOutStation) {
+    public void setCheckOutStation(Station checkOutStation) {
         this.checkOutStation = checkOutStation;
     }
 
@@ -65,11 +88,11 @@ public class Ticket implements Serializable {
         this.checkInTime = checkInTime;
     }
 
-    public Date getCheckOutTime() {
+    public String getCheckOutTime() {
         return checkOutTime;
     }
 
-    public void setCheckOutTime(Date checkOutTime) {
+    public void setCheckOutTime(String checkOutTime) {
         this.checkOutTime = checkOutTime;
     }
 
@@ -81,11 +104,11 @@ public class Ticket implements Serializable {
         this.date = date;
     }
 
-    public double getFare() {
+    public int getFare() {
         return fare;
     }
 
-    public void setFare(double fare) {
+    public void setFare(int fare) {
         this.fare = fare;
     }
 

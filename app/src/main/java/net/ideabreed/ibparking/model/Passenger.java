@@ -9,9 +9,15 @@ public class Passenger {
     private int icon;
     private int passengerId;
     private String code;
-    private int discount;
+    private double discount;
 
-    public Passenger(String type, int icon, int passengerId, String code, int discount) {
+    public Passenger(String type, String code, double discount) {
+        this.type = type;
+        this.code = code;
+        this.discount = discount;
+    }
+
+    public Passenger(String type, int icon, int passengerId, String code, double discount) {
         this.type = type;
         this.icon = icon;
         this.passengerId = passengerId;
@@ -51,11 +57,11 @@ public class Passenger {
         this.code = code;
     }
 
-    public int getDiscount() {
+    public double getDiscount() {
         return discount;
     }
 
-    public void setDiscount(int discount) {
+    public void setDiscount(double discount) {
         this.discount = discount;
     }
 }

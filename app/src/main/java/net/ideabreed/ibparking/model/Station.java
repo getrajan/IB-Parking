@@ -3,11 +3,18 @@ package net.ideabreed.ibparking.model; /*
  * Copyright @2021
  */
 
-public class Station {
+import java.io.Serializable;
+
+public class Station implements Serializable {
     private String stationName;
     private String stationCode;
     private boolean isCurrent;
     private int stationId;
+
+    public Station(String stationName, String stationCode) {
+        this.stationName = stationName;
+        this.stationCode = stationCode;
+    }
 
     public Station(String stationName, String stationCode, boolean isCurrent, int stationId) {
         this.stationName = stationName;

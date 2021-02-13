@@ -5,39 +5,39 @@ package net.ideabreed.ibparking.model; /*
 
 public class Rates {
 
-    private String rateId;
-    private String stationStart;
-    private String stationEnd;
+    private int rateId;
+    private int stationStart;
+    private int stationEnd;
     private int rate;
 
-    public Rates(String rateId, String stationStart, String stationEnd, int rate) {
+    public Rates(int rateId, int stationStart, int stationEnd, int rate) {
         this.rateId = rateId;
         this.stationStart = stationStart;
         this.stationEnd = stationEnd;
         this.rate = rate;
     }
 
-    public String getRateId() {
+    public int getRateId() {
         return rateId;
     }
 
-    public void setRateId(String rateId) {
+    public void setRateId(int rateId) {
         this.rateId = rateId;
     }
 
-    public String getStationStart() {
+    public int getStationStart() {
         return stationStart;
     }
 
-    public void setStationStart(String stationStart) {
+    public void setStationStart(int stationStart) {
         this.stationStart = stationStart;
     }
 
-    public String getStationEnd() {
+    public int getStationEnd() {
         return stationEnd;
     }
 
-    public void setStationEnd(String stationEnd) {
+    public void setStationEnd(int stationEnd) {
         this.stationEnd = stationEnd;
     }
 

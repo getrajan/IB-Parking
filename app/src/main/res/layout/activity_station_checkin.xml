@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundColor"
-    tools:context=".view.checkin.StationCheckinActivity">
+    tools:context=".view.checkin.CheckInActivity">
 
     <LinearLayout
         android:id="@+id/stationCheckInBackLL"
@@ -35,204 +35,93 @@
             android:textSize="18sp" />
     </LinearLayout>
 
-    <!--Ticket Type selection-->
 
-<!--    <LinearLayout-->
-<!--        android:id="@+id/linearLayout"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="100dp"-->
+    <!--    Station Selection-->
+
+    <!--    <LinearLayout-->
+<!--        android:id="@+id/checkInStationSelectStationLL"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginLeft="20dp"-->
 <!--        android:orientation="horizontal"-->
 <!--        app:layout_constraintBottom_toBottomOf="parent"-->
 <!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.03"-->
 <!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/stationCheckInBackLL"-->
-<!--        app:layout_constraintVertical_bias="0.05">-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/passengerTypeRV"-->
+<!--        app:layout_constraintVertical_bias="0.050000012">-->
 
-<!--        <com.google.android.material.card.MaterialCardView-->
-<!--            android:id="@+id/checkInStationNormalTypeCV"-->
+<!--        <ImageView-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginRight="5dp"-->
+<!--            android:src="@drawable/ic_bus_icon_96"-->
+<!--            app:tint="@color/primaryColor" />-->
+
+<!--        <TextView-->
 <!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
 <!--            android:layout_gravity="center"-->
-<!--            android:layout_margin="10dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:elevation="10dp"-->
-<!--            android:outlineSpotShadowColor="@color/primaryColor"-->
-<!--            app:cardCornerRadius="15dp"-->
-<!--            app:cardElevation="5dp">-->
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:orientation="vertical">-->
-
-<!--                <ImageView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center_horizontal"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:src="@drawable/ic_normal_person_34" />-->
-
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:fontFamily="@font/poppins_regular"-->
-<!--                    android:text="Normal"-->
-<!--                    android:textColor="@color/textColor"-->
-<!--                    android:textSize="18sp" />-->
-<!--            </LinearLayout>-->
-<!--        </com.google.android.material.card.MaterialCardView>-->
-
-<!--        <com.google.android.material.card.MaterialCardView-->
-<!--            android:id="@+id/checkInStationElderlyTypeCV"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_margin="10dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:elevation="10dp"-->
-<!--            android:outlineSpotShadowColor="@color/primaryColor"-->
-<!--            app:cardCornerRadius="15dp"-->
-<!--            app:cardElevation="5dp">-->
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:orientation="vertical">-->
-
-<!--                <ImageView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:src="@drawable/ic_elderly_34" />-->
-
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:fontFamily="@font/poppins_regular"-->
-<!--                    android:text="Elderly"-->
-<!--                    android:textColor="@color/textColor"-->
-<!--                    android:textSize="18sp" />-->
-<!--            </LinearLayout>-->
-<!--        </com.google.android.material.card.MaterialCardView>-->
-
-<!--        <com.google.android.material.card.MaterialCardView-->
-<!--            android:id="@+id/checkInStationStudentTypeCV"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:layout_margin="10dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:elevation="10dp"-->
-<!--            android:outlineSpotShadowColor="@color/primaryColor"-->
-<!--            app:cardCornerRadius="15dp"-->
-<!--            app:cardElevation="5dp">-->
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:orientation="vertical">-->
-
-<!--                <ImageView-->
-<!--                    android:id="@+id/studentTypeIV"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:src="@drawable/ic_student_34" />-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/studentTypeTV"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:fontFamily="@font/poppins_regular"-->
-<!--                    android:text="Student"-->
-<!--                    android:textColor="@color/textColor"-->
-<!--                    android:textSize="18sp" />-->
-<!--            </LinearLayout>-->
-<!--        </com.google.android.material.card.MaterialCardView>-->
-
+<!--            android:layout_marginLeft="5dp"-->
+<!--            android:fontFamily="@font/poppins_semibold"-->
+<!--            android:letterSpacing="0.05"-->
+<!--            android:text="Select Station"-->
+<!--            android:textColor="@color/primaryColor"-->
+<!--            android:textSize="22dp" />-->
 <!--    </LinearLayout>-->
+
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/checkInStationSelectStationRV"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:layout_marginEnd="10dp"-->
+<!--        android:layout_marginRight="10dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/checkInStationSelectStationLL"-->
+<!--        app:layout_constraintVertical_bias="0.07999998" />-->
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Select Passenger Type"
+        android:textColor="@color/primaryColor"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/passengerTypeRV"
+        app:layout_constraintTop_toBottomOf="@+id/stationCheckInBackLL"
+        app:layout_constraintVertical_bias="0.696"
+        tools:layout_editor_absoluteX="20dp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/passengerTypeRV"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:nestedScrollingEnabled="false"
         android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
+        android:nestedScrollingEnabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.110000014" />
-    <!--    Station Selection-->
-    <LinearLayout
-        android:id="@+id/checkInStationSelectStationLL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.03"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passengerTypeRV"
-        app:layout_constraintVertical_bias="0.050000012">
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginRight="5dp"
-            android:src="@drawable/ic_bus_icon_96"
-            app:tint="@color/primaryColor" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
-            android:fontFamily="@font/poppins_semibold"
-            android:letterSpacing="0.05"
-            android:text="Select Station"
-            android:textColor="@color/primaryColor"
-            android:textSize="22dp" />
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/checkInStationSelectStationRV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkInStationSelectStationLL"
-        app:layout_constraintVertical_bias="0.07999998" />
-
+        app:layout_constraintVertical_bias="0.356" />
 
     <Button
-        android:id="@+id/checkInStationNextBtn"
+        android:id="@+id/checkInBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@color/primaryColor"
-        android:text="Next"
+        android:layout_marginHorizontal="20dp"
+        android:text="Check in"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkInStationSelectStationRV"
-        app:layout_constraintVertical_bias="0.75" />
+        app:layout_constraintTop_toBottomOf="@+id/passengerTypeRV"
+        app:layout_constraintVertical_bias="0.212"
+        tools:layout_editor_absoluteX="24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,7 @@ package net.ideabreed.ibparking.presenter;/*
  * Copyright @2021
  */
 
-import android.content.Context;
+import net.ideabreed.ibparking.model.User;
 
 public interface LoginService {
     public interface View {
@@ -15,6 +15,6 @@ public interface LoginService {
     }
 
     public interface Presenter {
-        void doLogin(String email, String password);
+        void doLogin(User user);
     }
 }
