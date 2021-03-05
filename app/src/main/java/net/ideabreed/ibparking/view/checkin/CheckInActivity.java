@@ -31,7 +31,6 @@ import net.ideabreed.ibparking.model.User;
 import net.ideabreed.ibparking.presenter.CheckInService;
 import net.ideabreed.ibparking.presenter.helper.BitmapTools;
 import net.ideabreed.ibparking.utils.UploadData;
-import net.ideabreed.ibparking.view.home.HomeActivity;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -100,7 +99,7 @@ public class CheckInActivity extends AppCompatActivity implements View.OnClickLi
 
             @Override
             public void onFinish() {
-                //    saveCounter(checkInTime, counter);
+                setResult(-1);
                 saveTicketToDb();
                 finish();
             }
@@ -124,8 +123,9 @@ public class CheckInActivity extends AppCompatActivity implements View.OnClickLi
         Ticket postTicket = new Ticket(checkInData.getType(), checkInData.getCheckInStation(), checkInTime, conductor, receiptId);
         boolean isInsert = databaseHelper.addTicket(postTicket);
         if (isInsert) {
-            Intent homeIntent = new Intent(this, HomeActivity.class);
-            startActivity(homeIntent);
+//            Intent homeIntent = new Intent(this, HomeActivity.class);
+//            startActivity(homeIntent);
+            finish();
         }
     }
 

@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.posapi.PosApi;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -53,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }, SPLASH_TIME_OUT);
         } else {
-            Log.d("hi", "no dab");
             DatabaseHelper dbHelper = new DatabaseHelper(MainActivity.this);
             User conductor = new User("test", "test123", false, 1);
             dbHelper.addUser(conductor);

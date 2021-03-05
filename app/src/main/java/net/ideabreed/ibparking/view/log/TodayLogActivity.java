@@ -1,6 +1,5 @@
 package net.ideabreed.ibparking.view.log;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.posapi.PosApi;
 import android.posapi.PrintQueue;
@@ -15,7 +14,6 @@ import net.ideabreed.ibparking.R;
 import net.ideabreed.ibparking.database.DatabaseHelper;
 import net.ideabreed.ibparking.model.Ticket;
 import net.ideabreed.ibparking.presenter.adapter.TodayLogRecyclerAdapter;
-import net.ideabreed.ibparking.view.home.HomeActivity;
 
 import java.util.ArrayList;
 
@@ -60,9 +58,6 @@ public class TodayLogActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                //    saveCounter(checkInTime, counter);
-                Intent homeIntent = new Intent(TodayLogActivity.this, HomeActivity.class);
-                startActivity(homeIntent);
                 finish();
             }
 
@@ -117,7 +112,7 @@ public class TodayLogActivity extends AppCompatActivity {
                         printQueue.addText(concentration, sb.toString().getBytes("GBK"));
                     }
 
-                    printQueue.addText(concentration,"\n\n\n\n".getBytes("GBK"));
+                    printQueue.addText(concentration, "\n\n\n\n".getBytes("GBK"));
                     printQueue.printStart();
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -133,9 +128,6 @@ public class TodayLogActivity extends AppCompatActivity {
         super.onDestroy();
         if (printQueue != null) {
             printQueue.close();
-        }
-        if (posApi != null) {
-            posApi.closeDev();
         }
     }
 }

@@ -1,6 +1,7 @@
 package net.ideabreed.ibparking.view.checkout;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.posapi.PosApi;
 import android.posapi.PrintQueue;
@@ -13,6 +14,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+
 import net.ideabreed.ibparking.R;
 import net.ideabreed.ibparking.database.DatabaseHelper;
 import net.ideabreed.ibparking.model.Bus;
@@ -23,9 +29,9 @@ import net.ideabreed.ibparking.model.Station;
 import net.ideabreed.ibparking.model.Ticket;
 import net.ideabreed.ibparking.presenter.CheckoutService;
 import net.ideabreed.ibparking.presenter.adapter.CheckOutReceiptListAdapter;
+import net.ideabreed.ibparking.presenter.helper.BitmapTools;
 import net.ideabreed.ibparking.utils.UploadData;
 import net.ideabreed.ibparking.view.checkin.SelectStationRecyclerViewAdapter;
-import net.ideabreed.ibparking.view.home.HomeActivity;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -48,6 +54,8 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
     String busCode = "";
     String checkInTime = "";
     String checkOutTime = "";
+    private int concentration = 60;
+
 
     private UploadData uploadData;
 
@@ -137,8 +145,9 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
         boolean isUpdate = databaseHelper.updateTicket(updatedTicket);
 
         if (isUpdate) {
-            Intent homeIntent = new Intent(this, HomeActivity.class);
-            startActivity(homeIntent);
+//            Intent homeIntent = new Intent(this, HomeActivity.class);
+//            startActivity(homeIntent);
+            finish();
         }
 
     }
@@ -246,9 +255,9 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
         ArrayList<ReceiptItem> receiptItems = new ArrayList<>();
         receiptItems.add(new ReceiptItem("Bus Number", currentBus.getBusNumber()));
         receiptItems.add(new ReceiptItem("Start Station", startStation.getStationName()));
-        receiptItems.add(new ReceiptItem("Check In At", ""));
+        receiptItems.add(new ReceiptItem("Check In At", checkInTime));
         receiptItems.add(new ReceiptItem("End Station", endStation.getStationName()));
-        receiptItems.add(new ReceiptItem("Check Out At", ""));
+        receiptItems.add(new ReceiptItem("Check Out At", checkOutTime));
         receiptItems.add(new ReceiptItem("Total Fare", "Rs. " + String.valueOf(totalFareAmount) + "/-"));
         receiptItems.add(new ReceiptItem("Date", checkInDate));
         receiptItems.add(new ReceiptItem("Type", checkoutPassenger.getType()));
@@ -315,10 +324,23 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
             sb.append("\n");
             sb.append("Type: " + checkoutPassenger.getType());
             sb.append("\n\n");
-            sb.append("Powered by Idea Breed Technology");
-            sb.append("\n\n\n\n\n");
+
+            String paymentQrString = "000201010212153137910524005204462103043357:273626500011fonepay.com01102103043357020627369206074457392520412345303524540515.005802NP5916N Cloud Pvt  Ltd6005Kaski622407062736920210985100793763047f0f";
+
+            StringBuilder qrSb = new StringBuilder();
+            qrSb.append(paymentQrString);
+
+            Bitmap qrBitmap = textToImage(qrSb.toString(), 200, 200);
+            byte[] printData = BitmapTools.bitmap2PrinterBytes(qrBitmap);
 
             printQueue.addText(60, sb.toString().getBytes("GBK"));
+            printQueue.addText(concentration, "\nScan this QR Code For Payment \n".getBytes("GBK"));
+            printQueue.addBmp(concentration, 80, 200, 200, printData);
+            printQueue.addText(concentration, "Powered by Idea Breed Technology \n\n\n".getBytes("GBK"));
+
+//            sb.append("");
+            sb.append("\n\n\n\n\n");
+
 
             printQueue.printStart();
         } catch (Exception e) {
@@ -359,8 +381,32 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
         if (printQueue != null) {
             printQueue.close();
         }
-        if (posApi != null) {
-            posApi.closeDev();
+    }
+    private Bitmap textToImage(String text, int width, int height) throws WriterException, NullPointerException {
+        BitMatrix bitMatrix;
+        try {
+            bitMatrix = new MultiFormatWriter().encode(text, BarcodeFormat.DATA_MATRIX.QR_CODE,
+                    width, height, null);
+        } catch (IllegalArgumentException Illegalargumentexception) {
+            return null;
         }
+
+        int bitMatrixWidth = bitMatrix.getWidth();
+        int bitMatrixHeight = bitMatrix.getHeight();
+        int[] pixels = new int[bitMatrixWidth * bitMatrixHeight];
+
+        int colorWhite = 0xFFFFFFFF;
+        int colorBlack = 0xFF000000;
+
+        for (int y = 0; y < bitMatrixHeight; y++) {
+            int offset = y * bitMatrixWidth;
+            for (int x = 0; x < bitMatrixWidth; x++) {
+                pixels[offset + x] = bitMatrix.get(x, y) ? colorBlack : colorWhite;
+            }
+        }
+        Bitmap bitmap = Bitmap.createBitmap(bitMatrixWidth, bitMatrixHeight, Bitmap.Config.ARGB_4444);
+
+        bitmap.setPixels(pixels, 0, width, 0, 0, bitMatrixWidth, bitMatrixHeight);
+        return bitmap;
     }
 }
